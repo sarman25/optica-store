@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Панель менеджера — Очки</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-screen">
+    <h2>Вход в панель менеджера</h2>
+    <input type="password" id="login-password" placeholder="Пароль">
+    <button id="login-btn">Войти</button>
+    <p id="login-error" style="color: red; display: none;">Неверный пароль</p>
+  </div>
+
+  <div id="admin-content" style="display: none;">
+
+  <h1>Панель менеджера</h1>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="products">Товары</button>
+    <button class="tab-btn" data-tab="orders">Заказы</button>
+  </div>
+
+  <!-- Вкладка "Товары" -->
+  <section id="products-tab" class="tab-content active">
+    <h2>Добавить новый товар</h2>
+    <form id="product-form">
+      <input type="text" id="p-name" placeholder="Название" required>
+      <textarea id="p-description" placeholder="Описание"></textarea>
+      <input type="number" id="p-price" placeholder="Цена" step="0.01" required>
+            <select id="p-category">
+        <option value="">Без категории</option>
+        <option value="Солнцезащитные">Солнцезащитные</option>
+        <option value="Для зрения">Для зрения</option>
+        <option value="Мужские">Мужские</option>
+        <option value="Женские">Женские</option>
+      </select>
+      <label>
+        <input type="checkbox" id="p-ishit"> Товар «Хит»
+      </label>
+            <input type="file" id="p-image-file" accept="image/*" multiple>
+      <small>Первое выбранное фото станет главным, остальные — дополнительными</small>
+      <input type="hidden" id="p-image">
+      <label>
+        <input type="checkbox" id="p-instock" checked> В наличии
+      </label>
+            <button type="submit">Добавить товар</button>
+      <button type="button" id="new-product-btn">+ Новый товар (очистить форму)</button>
+    </form>
+
+    <div id="gallery-manager" style="display:none;">
+      <h3>Фото товара: <span id="gallery-product-name"></span></h3>
+      <div id="gallery-images" class="gallery-images-row"></div>
+      <input type="file" id="gallery-file-input" accept="image/*" multiple>
+      <button type="button" id="gallery-upload-btn">Добавить ещё фото</button>
+    </div>
+
+    <h2>Список товаров</h2>
+    <div id="products-list"></div>
+  </section>
+
+    <!-- Вкладка "Заказы" -->
+  <section id="orders-tab" class="tab-content">
+    <h2>Заказы</h2>
+
+    <div id="orders-stats" class="stats-row"></div>
+
+    <div class="orders-controls">
+      <input type="text" id="orders-search" placeholder="Поиск по имени или телефону...">
+      <select id="orders-status-filter">
+        <option value="all">Все статусы</option>
+        <option value="new">Новый</option>
+        <option value="processing">В обработке</option>
+        <option value="shipped">Отправлен</option>
+        <option value="done">Завершён</option>
+      </select>
+      <select id="orders-sort">
+        <option value="new_first">Сначала новые</option>
+        <option value="old_first">Сначала старые</option>
+      </select>
+    </div>
+
+    <div id="orders-list"></div>
+  </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

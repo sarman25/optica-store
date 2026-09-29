@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Магазин очков 👓</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 16'%3E%3Ccircle cx='7' cy='8' r='6' stroke='%23B5652D' stroke-width='2' fill='none'/%3E%3Ccircle cx='23' cy='8' r='6' stroke='%23B5652D' stroke-width='2' fill='none'/%3E%3Cline x1='13' y1='8' x2='17' y2='8' stroke='%23B5652D' stroke-width='2'/%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">
+      <svg class="logo-icon" width="30" height="16" viewBox="0 0 30 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="7" cy="8" r="6" stroke="currentColor" stroke-width="2"/>
+        <circle cx="23" cy="8" r="6" stroke="currentColor" stroke-width="2"/>
+        <line x1="13" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="2"/>
+        <line x1="1" y1="6" x2="0" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="29" y1="6" x2="30" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>Магазин очков</span>
+    </div>
+    <div class="header-actions">
+      <button id="contacts-btn" class="ghost-btn">Контакты</button>
+      <button id="cart-btn">Корзина <span id="cart-count">0</span></button>
+    </div>
+  </header>
+
+      <!-- ===== ГЛАВНЫЙ ЭКРАН ===== -->
+  <section id="home-screen" class="hub-screen">
+    <div class="hub-grid">
+            <a href="#" class="hub-tile" data-category="Женские">
+        <div class="hub-tile-text">
+          <span class="hub-tile-label">Женские очки</span>
+          <span class="hub-tile-sub">Новая коллекция</span>
+        </div>
+      </a>
+      <a href="#" class="hub-tile" data-category="Мужские">
+        <div class="hub-tile-text">
+          <span class="hub-tile-label">Мужские очки</span>
+          <span class="hub-tile-sub">Строгий стиль</span>
+        </div>
+      </a>
+      <a href="#" class="hub-tile" data-category="Солнцезащитные">
+        <div class="hub-tile-text">
+          <span class="hub-tile-label">Солнцезащитные</span>
+          <span class="hub-tile-sub">Защита UV400</span>
+        </div>
+      </a>
+      <a href="#" class="hub-tile" data-category="Для зрения">
+        <div class="hub-tile-text">
+          <span class="hub-tile-label">Для зрения</span>
+          <span class="hub-tile-sub">Точность и комфорт</span>
+        </div>
+      </a>
+      <button id="hub-all-btn" class="hub-center-btn">Весь каталог →</button>
+    </div>
+  </section>
+
+  <!-- ===== ЭКРАН КАТАЛОГА ===== -->
+  <section id="catalog-screen" class="catalog-screen hidden">
+    <div class="catalog-top">
+      <button id="back-home-btn" class="back-btn">← На главную</button>
+    </div>
+
+        <div class="search-row">
+      <div class="search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+          <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="search-input" placeholder="Поиск по названию..." class="search-input">
+      </div>
+    </div>
+
+        <div class="filters-row">
+      <nav id="category-filters" class="filters"></nav>
+      <div class="filters-right">
+        <select id="sort-select" class="sort-select">
+          <option value="default">По умолчанию</option>
+          <option value="price_asc">Сначала дешевле</option>
+          <option value="price_desc">Сначала дороже</option>
+          <option value="popularity">По популярности</option>
+        </select>
+        <div id="products-count" class="products-count"></div>
+      </div>
+    </div>
+
+        <main id="products-grid" class="products-grid"></main>
+  </section>
+
+  <!-- ===== ЭКРАН ТОВАРА ===== -->
+  <section id="product-screen" class="product-screen hidden">
+    <div class="catalog-top">
+      <button id="back-catalog-btn" class="back-btn">← Назад к каталогу</button>
+    </div>
+    <div id="product-detail" class="product-detail"></div>
+  </section>
+
+    <footer class="site-footer hidden" id="site-footer">
+    <div class="footer-col">
+      <div class="logo footer-logo">
+        <svg class="logo-icon" width="26" height="14" viewBox="0 0 30 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="7" cy="8" r="6" stroke="currentColor" stroke-width="2"/>
+          <circle cx="23" cy="8" r="6" stroke="currentColor" stroke-width="2"/>
+          <line x1="13" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="2"/>
+          <line x1="1" y1="6" x2="0" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="29" y1="6" x2="30" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Магазин очков</span>
+      </div>
+      <p>Оправы для зрения и солнца — подобранные, а не просто выставленные.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <p>+7 (000) 000-00-00</p>
+      <p>info@example.com</p>
+    </div>
+    <div class="footer-col">
+      <h4>Покупателям</h4>
+      <p>Доставка и оплата</p>
+      <p>Примерка перед покупкой</p>
+    </div>
+  </footer>
+
+  <!-- Окно корзины -->
+  <div id="cart-modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="close-cart">✕</button>
+      <h2>Корзина</h2>
+      <div id="cart-items"></div>
+      <p class="cart-total-line">Итого: <span id="cart-total">0</span> ₽</p>
+
+      <h3>Оформление заказа</h3>
+      <form id="checkout-form">
+        <input type="text" id="c-name" placeholder="Ваше имя" required>
+        <input type="tel" id="c-phone" placeholder="Телефон" required>
+        <input type="text" id="c-address" placeholder="Адрес доставки">
+        <button type="submit">Оформить заказ</button>
+      </form>
+    </div>
+  </div>
+
+    <!-- Окно быстрого заказа "В 1 клик" -->
+  <div id="quick-modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="close-quick">✕</button>
+      <h2>Заказ в 1 клик</h2>
+      <p id="quick-product-name" class="quick-product-name"></p>
+      <form id="quick-form">
+        <input type="text" id="q-name" placeholder="Ваше имя" required>
+        <input type="tel" id="q-phone" placeholder="Телефон" required>
+        <button type="submit">Купить сейчас</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
